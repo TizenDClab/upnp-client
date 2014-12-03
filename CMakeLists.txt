@@ -4,7 +4,7 @@ PROJECT(upnp-client)
 
 SET(PREFIX ${CMAKE_INSTALL_PREFIX})
 SET(EXEC_PREFIX "\${prefix}")
-SET(LIBDIR "\${prefix}/lib")
+SET(LIBDIR "\${prefix}/lib/arm")
 SET(INCLUDEDIR "\${prefix}/include")
 SET(VERSION 1.0)
 
