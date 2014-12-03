@@ -1226,7 +1226,7 @@ int TizenDeviceSendText(IXML_Document * in, IXML_Document ** out,
 	}
 	
 	if (strlen(value) < MIN_TEXT_LENGTH || strlen(value) > MAX_TEXT_LENGTH) {
-		SampleUtil_Print("error: can't get text %s\n", string);
+		SampleUtil_Print("error: can't get filename from server\n");
 		(*errorString) = "Invalid Text";
 		return UPNP_E_INVALID_PARAM;
 	}
