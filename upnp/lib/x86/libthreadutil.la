@@ -38,4 +38,4 @@ dlopen=''
 dlpreopen=''
 
 # Directory that this library needs to be installed in:
-libdir='/home/sejun/Courses/2014-02/tizen/lib'
+libdir='/home/chansoo/project/tizen/upnp/libupnp-1.6.19/lib'
