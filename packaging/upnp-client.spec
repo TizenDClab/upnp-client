@@ -1,12 +1,12 @@
 ## Basic Descriptions of this package
-Name:       upnp-server
-Summary:    upnp server
+Name:       upnp-client
+Summary:    upnp client
 Version:		1.2
 Release:    1
 Group:      Framework/system
 License:    Apache License, Version 2.0
 Source0:    %{name}-%{version}.tar.gz
-Source1:    upnp-server.service
+Source1:    upnp-client.service
 
 # Required packages
 # Pkgconfig tool helps to find libraries that have already been installed
@@ -19,7 +19,7 @@ BuildRequires:  pkgconfig(dlog)
 
 ## Description string that this package's human users can understand
 %description
-upnp server framework
+upnp client framework
 
 
 ## Preprocess script
@@ -52,16 +52,16 @@ install --directory %{buildroot}/usr/share/web
 # install systemd service
 mkdir -p %{buildroot}%{_libdir}/systemd/system/graphical.target.wants
 install -m 0644 %SOURCE1 %{buildroot}%{_libdir}/systemd/system/
-ln -s ../upnp-server.service %{buildroot}%{_libdir}/systemd/system/graphical.target.wants/upnp-server.service
+ln -s ../upnp-client.service %{buildroot}%{_libdir}/systemd/system/graphical.target.wants/upnp-client.service
 
 ## Postprocess script
 %post 
 
 ## Binary Package: File list
 %files
-%manifest upnp-server.manifest
-%{_bindir}/upnp_server
-%{_libdir}/systemd/system/upnp-server.service
-%{_libdir}/systemd/system/graphical.target.wants/upnp-server.service
+%manifest upnp-client.manifest
+%{_bindir}/upnp_client
+%{_libdir}/systemd/system/upnp-client.service
+%{_libdir}/systemd/system/graphical.target.wants/upnp-client.service
 /usr/share/license/%{name}
 /usr/share/web/tvdevicedesc.xml

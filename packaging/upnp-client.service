@@ -3,8 +3,8 @@ Description=Start the remote key framework
 After=load-virtual-homekey.service bluetooth.service
 
 [Service]
-#You can the name of bluetooth device by changing the parameter to upnp_server.
-ExecStart=/usr/bin/upnp_server Tizen-Server
+#You can the name of bluetooth device by changing the parameter to upnp_client.
+ExecStart=/usr/bin/upnp_client Tizen-Client
 Restart=always
 RestartSec=1
 
