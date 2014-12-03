@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<root xmlns="urn:schemas-upnp-org:device-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <device>
+    <deviceType>urn:schemas-upnp-org:device:tizen:1</deviceType>
+    <friendlyName>Tizen UPnP Client Module</friendlyName>
+    <!--manufacturer>TV Manufacturer Name</manufacturer-->
+    <!--manufacturerURL>http://www.manufacturer.com</manufacturerURL-->
+    <modelDescription>Tizen UPnP Client Module</modelDescription>
+    <modelName>Tizen</modelName>
+    <!--modelNumber>1.0</modelNumber-->
+    <!--modelURL>http://www.manufacturer.com/TVEmulator/</modelURL-->
+    <serialNumber>123456789001</serialNumber>
+    <UDN>uuid:Upnp-TizenEmulator-1_0-1234567890001</UDN>
+    <UPC>123456789</UPC>
+    <serviceList>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:tizencontrol:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:tizencontrol1</serviceId>
+        <controlURL>/upnp/control/tizencontrol1</controlURL>
+        <eventSubURL>/upnp/event/tizencontrol1</eventSubURL>
+        <SCPDURL>/tizencontrolSCPD.xml</SCPDURL>
+      </service>
+      <service>
+        <serviceType>urn:schemas-upnp-org:service:tizenpicture:1</serviceType>
+        <serviceId>urn:upnp-org:serviceId:tizenpicture1</serviceId>
+        <controlURL>/upnp/control/tizenpicture1</controlURL>
+        <eventSubURL>/upnp/event/tizenpicture1</eventSubURL>
+        <SCPDURL>/tizenpictureSCPD.xml</SCPDURL>
+      </service>
+    </serviceList>
+   <presentationURL>/tizendevicepres.html</presentationURL>
+z</device>
+</root>

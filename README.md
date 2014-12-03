@@ -1,4 +1,2 @@
-upnp-client
-===========
-
-upnp client
+tizen
+=====
