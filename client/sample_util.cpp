@@ -43,6 +43,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <string.h>
 
 #if !UPNP_HAVE_TOOLS
 #	error "Need upnptools.h to compile samples ; try ./configure --enable-tools"
@@ -318,11 +319,11 @@ void SampleUtil_PrintEventType(Upnp_EventType S)
 int SampleUtil_PrintEvent(Upnp_EventType EventType, void *Event)
 {
 	ithread_mutex_lock(&display_mutex);
+	unsigned int start, end;
 
 	SampleUtil_Print(
-		"======================================================================\n"
-		"----------------------------------------------------------------------\n");
-	SampleUtil_PrintEventType(EventType);
+		"======================================================================\n");
+//	SampleUtil_PrintEventType(EventType);
 	switch (EventType) {
 	/* SSDP */
 	case UPNP_DISCOVERY_ADVERTISEMENT_ALIVE:
@@ -350,23 +351,40 @@ int SampleUtil_PrintEvent(Upnp_EventType EventType, void *Event)
 		struct Upnp_Action_Request *a_event =
 			(struct Upnp_Action_Request *)Event;
 		char *xmlbuff = NULL;
+		int string_length = 0;
 
-		SampleUtil_Print("ErrCode     =  %s(%d)\n",
-			UpnpGetErrorMessage(a_event->ErrCode), a_event->ErrCode);
-		SampleUtil_Print("ErrStr      =  %s\n", a_event->ErrStr);
+//		SampleUtil_Print("ErrCode     =  %s(%d)\n",
+//			UpnpGetErrorMessage(a_event->ErrCode), a_event->ErrCode);
+//		SampleUtil_Print("ErrStr      =  %s\n", a_event->ErrStr);
 		SampleUtil_Print("ActionName  =  %s\n", a_event->ActionName);
-		SampleUtil_Print("UDN         =  %s\n", a_event->DevUDN);
+		SampleUtil_Print("Client      =  %s\n", a_event->DevUDN);
 		SampleUtil_Print("ServiceID   =  %s\n", a_event->ServiceID);
+
 		if (a_event->ActionRequest) {
 			xmlbuff = ixmlPrintNode((IXML_Node *)a_event->ActionRequest);
+#if 1
+			start = (unsigned int)strstr(xmlbuff, "<Text>") + strlen("<Text>");
+			end = (unsigned int)strstr(xmlbuff, "</Text>");
+			string_length = (end-start)/sizeof(char);
+			
+			char string[string_length];
+			strncpy(string, (char *)start, string_length);
+			string[string_length] = '\0';
+
+			SampleUtil_Print("RecieveText =  %s\n", string);
+			ixmlFreeDOMString(xmlbuff);
+			xmlbuff = NULL;
+#else
 			if (xmlbuff) {
-				SampleUtil_Print("ActRequest  =  %s\n", xmlbuff);
+				SampleUtil_Print("ActRequest  =  %s", xmlbuff);
 				ixmlFreeDOMString(xmlbuff);
 			}
 			xmlbuff = NULL;
+#endif
 		} else {
 			SampleUtil_Print("ActRequest  =  (null)\n");
 		}
+#if 0
 		if (a_event->ActionResult) {
 			xmlbuff = ixmlPrintNode((IXML_Node *)a_event->ActionResult);
 			if (xmlbuff) {
@@ -377,6 +395,7 @@ int SampleUtil_PrintEvent(Upnp_EventType EventType, void *Event)
 		} else {
 			SampleUtil_Print("ActResult   =  (null)\n");
 		}
+#endif
 		break;
 	}
 	case UPNP_CONTROL_ACTION_COMPLETE: {
@@ -491,7 +510,6 @@ int SampleUtil_PrintEvent(Upnp_EventType EventType, void *Event)
 	}
 	}
 	SampleUtil_Print(
-		"----------------------------------------------------------------------\n"
 		"======================================================================\n"
 		"\n\n\n");
 

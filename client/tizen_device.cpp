@@ -472,7 +472,7 @@ int TizenDeviceHandleActionRequest(struct Upnp_Action_Request *ca_event)
 }
 
 int TizenDeviceSetServiceTableVar(unsigned int service, int variable, char *value)
-{
+{	
 	/* IXML_Document  *PropSet= NULL; */
 	if (service >= TV_SERVICE_SERVCOUNT ||
 	    variable >= tizen_service_table[service].VariableCount ||
@@ -1200,11 +1200,11 @@ int TizenDeviceSendText(IXML_Document * in, IXML_Document ** out,
 	char *value = NULL;
 	char string[100];
 
-	FILE * fp = fopen("filename_device.txt", "w+");
+	FILE * fp = fopen("/tmp/my_url.txt", "w+");
 	int filewritelength=0;
 
 	if(fp==NULL) {
-		printf("[OCS] File open fail!\n");
+		printf("File open fail!\n");
 		while(1);
 		}
 	
