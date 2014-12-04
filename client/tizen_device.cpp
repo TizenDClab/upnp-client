@@ -46,7 +46,7 @@
 
 #include <assert.h>
 
-#define DEFAULT_WEB_DIR "../web"
+#define DEFAULT_WEB_DIR "/usr/share/web"
 
 #define DESC_URL_SIZE 200
 
