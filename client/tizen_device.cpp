@@ -42,10 +42,11 @@
  */
 
 #include "tizen_device.h"
+#include <sys/stat.h>
 
 #include <assert.h>
 
-#define DEFAULT_WEB_DIR "/usr/share/web"
+#define DEFAULT_WEB_DIR "../web"
 
 #define DESC_URL_SIZE 200
 
@@ -1201,6 +1202,8 @@ int TizenDeviceSendText(IXML_Document * in, IXML_Document ** out,
 	char string[100];
 
 	FILE * fp = fopen("/tmp/my_url.txt", "w+");
+	FILE * fp2 = fopen("/tmp/my_list.txt", "w+");
+	
 	int filewritelength=0;
 
 	if(fp==NULL) {
@@ -1223,6 +1226,7 @@ int TizenDeviceSendText(IXML_Document * in, IXML_Document ** out,
 		filewritelength = fwrite(value, strlen(value), 1, fp);
 		fputc('\n', fp);
 		fclose(fp);
+		fclose(fp2);
 	}
 	
 	if (strlen(value) < MIN_TEXT_LENGTH || strlen(value) > MAX_TEXT_LENGTH) {
@@ -1374,6 +1378,15 @@ int TizenDeviceStart(char *ip_address, unsigned short port,
 	char desc_doc_url[DESC_URL_SIZE];
 	
 	FILE * fp = fopen("/tmp/client_system.txt", "w+");
+	FILE * fp_url = fopen("/tmp/my_url.txt", "w+");
+	FILE * fp_list = fopen("/tmp/my_list.txt", "w+");
+	
+	chmod("/tmp/my_url.txt", (00777));//S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IWGRP|S_IXGRP|S_IROTH|S_IWOTH|S_IXOTH
+	chmod("/tmp/my_list.txt", (00777));
+	chmod("/tmp/client_system.txt", (00777));
+	
+	fclose(fp_url);
+	fclose(fp_list);
 
 	ithread_mutex_init(&TVDevMutex, NULL);
 
