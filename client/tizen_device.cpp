@@ -1378,12 +1378,12 @@ int TizenDeviceStart(char *ip_address, unsigned short port,
 	char desc_doc_url[DESC_URL_SIZE];
 	
 	FILE * fp = fopen("/tmp/client_system.txt", "w+");
-	FILE * fp_url = fopen("/tmp/my_url.txt", "w+");
 	FILE * fp_list = fopen("/tmp/my_list.txt", "w+");
+	FILE * fp_url = fopen("/tmp/my_url.txt", "w+");
 	
-	chmod("/tmp/my_url.txt", (00777));//S_IRUSR|S_IWUSR|S_IXUSR|S_IRGRP|S_IWGRP|S_IXGRP|S_IROTH|S_IWOTH|S_IXOTH
-	chmod("/tmp/my_list.txt", (00777));
 	chmod("/tmp/client_system.txt", (00777));
+	chmod("/tmp/my_list.txt", (00777));
+	chmod("/tmp/my_url.txt", (00777));
 	
 	fclose(fp_url);
 	fclose(fp_list);
