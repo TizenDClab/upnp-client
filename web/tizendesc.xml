@@ -14,7 +14,7 @@
     <!--modelNumber>1.0</modelNumber-->
     <!--modelURL>http://www.manufacturer.com/TVEmulator/</modelURL-->
     <serialNumber>123456789001</serialNumber>
-    <UDN>uuid:Upnp-DCLAB-client</UDN>	<!--uuid-->
+    <UDN>uuid:Upnp-TizenEmulator-1_0-1234567890001</UDN>	<!--uuid-->
     <UPC>123456789</UPC>
     <serviceList>
       <service>
@@ -33,5 +33,5 @@
       </service>
     </serviceList>
    <presentationURL>/tizendevicepres.html</presentationURL>
-z</device>
+</device>
 </root>

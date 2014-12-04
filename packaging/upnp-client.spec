@@ -45,9 +45,9 @@ cp LICENSE %{buildroot}/usr/share/license/%{name}
 
 #install lib files
 mkdir -p %{buildroot}/usr/share/web
-cp -f web/tvdevicedesc.xml %{buildroot}/usr/share/web/tvdevicedesc.xml
+cp -f web/tizendesc.xml %{buildroot}/usr/share/web/tizendesc.xml
 install --directory %{buildroot}/usr/share/web
-#install -m 0644 web/tvdevicedesc.xml %{buildroot}/usr/share/web/
+#install -m 0644 web/tizendesc.xml %{buildroot}/usr/share/web/
 
 # install systemd service
 mkdir -p %{buildroot}%{_libdir}/systemd/system/graphical.target.wants
@@ -64,4 +64,4 @@ ln -s ../upnp-client.service %{buildroot}%{_libdir}/systemd/system/graphical.tar
 %{_libdir}/systemd/system/upnp-client.service
 %{_libdir}/systemd/system/graphical.target.wants/upnp-client.service
 /usr/share/license/%{name}
-/usr/share/web/tvdevicedesc.xml
+/usr/share/web/tizendesc.xml

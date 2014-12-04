@@ -45,7 +45,7 @@
 
 #include <assert.h>
 
-#define DEFAULT_WEB_DIR "../web"
+#define DEFAULT_WEB_DIR "/usr/share/web"
 
 #define DESC_URL_SIZE 200
 
@@ -1373,7 +1373,7 @@ int TizenDeviceStart(char *ip_address, unsigned short port,
 	int ret = UPNP_E_SUCCESS;
 	char desc_doc_url[DESC_URL_SIZE];
 	
-	FILE * fp = fopen("client_system.txt", "w+");
+	FILE * fp = fopen("/tmp/client_system.txt", "w+");
 
 	ithread_mutex_init(&TVDevMutex, NULL);
 
